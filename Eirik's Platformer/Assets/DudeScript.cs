@@ -6,6 +6,7 @@ public class DudeScript : MonoBehaviour
 {
 
     public float speed;
+    public float jumpspeed;
     Rigidbody2D rb;
     void Start()
     {
@@ -16,6 +17,7 @@ public class DudeScript : MonoBehaviour
     void Update()
     {
         Move();
+        Jump();
     }
 
     void Move()
@@ -25,6 +27,24 @@ public class DudeScript : MonoBehaviour
 
         rb.MovePosition(rb.position + move);
 
+    }
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            rb.AddForce(Vector2.up * jumpspeed );
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        rb.gravityScale = 1;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) 
+    {
+        rb.gravityScale = 100;
     }
 }
 
