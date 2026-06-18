@@ -39,7 +39,7 @@ public class DudeScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.gravityScale = 1;
+        rb.gravityScale = 5;
     }
 
     private void OnCollisionExit2D(Collision2D collision) 
