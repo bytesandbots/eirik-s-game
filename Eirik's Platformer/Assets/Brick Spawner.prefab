@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5042691049730898748}
   - component: {fileID: 8759927314507636002}
   - component: {fileID: -3200639780205071102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,5 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6059aea412140274ca020a2d9bfad34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brickamount: 0
-  brick: {fileID: 4772540573602046643, guid: 6d43968bdad613e44b989fc5267f994e, type: 3}
+  brickPrefab: {fileID: 4772540573602046643, guid: 6d43968bdad613e44b989fc5267f994e, type: 3}
+  brickCount: 5
+  brickSize: {x: 0.15, y: 0.15, z: 1}
+  spacing: 0.15
+  spawnHorizontal: 1
