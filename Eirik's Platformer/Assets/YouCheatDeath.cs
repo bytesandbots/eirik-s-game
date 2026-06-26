@@ -20,4 +20,12 @@ public class YouCheatDeath: MonoBehaviour
             rb.gravityScale = 1f;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Spike"))
+        {
+            transform.position = rESPAWNTHINGY.position;
+        }
+    }
 }

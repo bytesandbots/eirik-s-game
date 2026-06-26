@@ -6,6 +6,7 @@ public class DudeScript : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
+    private int jumpAmount;
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
@@ -32,6 +33,8 @@ public class DudeScript : MonoBehaviour
 
         // normal gravity always, no need to change it
         rb.gravityScale = isGrounded ? 3f : 5f;
+        // here is where I change the jump amount
+        if (isGrounded) jumpAmount = 1;
 
         Move();
     }
@@ -44,10 +47,34 @@ public class DudeScript : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+
+        switch (jumpAmount) 
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            case 1:
+                speed = 5f;
+                jumpForce = 10f;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                    jumpAmount--;
+                }
+                break;
+            case 2:
+                speed = 5f;
+                jumpForce = 10f;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                    jumpAmount--;
+                }
+                break;  
         }
+            
+
+
+
+       
     }
 }
 
