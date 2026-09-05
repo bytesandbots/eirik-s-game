@@ -52,8 +52,8 @@ public class DudeScript : MonoBehaviour
         {
 
             case 1:
-                speed = 5f;
-                jumpForce = 10f;
+                speed = 10f;
+                jumpForce = 14f;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -62,7 +62,7 @@ public class DudeScript : MonoBehaviour
                 break;
             case 2:
                 speed = 5f;
-                jumpForce = 10f;
+                jumpForce = 13f;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);

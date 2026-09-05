@@ -15,7 +15,9 @@ public class SpawnMap : MonoBehaviour
 
     private BoxCollider boxCollider;
     private List<GameObject> spawnedBricks = new List<GameObject>();
-
+    [Header("Spike? yes or no?")]
+    public GameObject spiker;
+    public bool spawnSpiker;
     void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
@@ -25,27 +27,19 @@ public class SpawnMap : MonoBehaviour
 
     void SpawnBricks()
     {
-        for (int i = 0; i < brickCount; i++)
+        Vector3 spawnPos;
+        for (int i = 0; i < brickCount; i+=1)
         {
-            Vector3 spawnPos;
-
             if (spawnHorizontal)
             {
                 // spawn bricks along X axis
                 spawnPos = transform.position + new Vector3(
-                    i * (brickSize.x + spacing),
-                    0,
-                    0
-                );
+                    i * (brickSize.x + spacing), 0, 0);
             }
             else
             {
                 // spawn bricks along Y axis (stacked)
-                spawnPos = transform.position + new Vector3(
-                    0,
-                    i * (brickSize.y + spacing),
-                    0
-                );
+                spawnPos = transform.position + new Vector3( 0,  i * (brickSize.y + spacing),  0 );
             }
 
             GameObject brick = Instantiate(brickPrefab, spawnPos, transform.rotation);
@@ -59,7 +53,15 @@ public class SpawnMap : MonoBehaviour
             }
 
             spawnedBricks.Add(brick);
+
         }
+
+        if (spawnSpiker)
+        {
+            Instantiate(spiker, spawnedBricks[spawnedBricks.Count-1].transform.position + new Vector3(0,0.95f,0), transform.rotation);
+
+        }
+
     }
 
     void AdjustCollider()
